@@ -219,6 +219,9 @@ if (age < 13) {
 *
 */
 
+
+/*
+
 var firstName = 'John';
 var age = 14;
 
@@ -267,13 +270,30 @@ switch(true) {
   default:
     console.log(firstName + ' is a man.')
 }
+*/
 
+/**********************************************
+*Truthy and Falsy values and equality operators
+*/
 
+// falsy values: undefined, null, 0, '', NaN
+// truthy values: Not falsy values
 
+var height;
 
+height = 23;
 
+if (height || height === 0) {
+  console.log('Variable is defined');
+} else {
+  console.log('The variable has not been defined.');
+}
 
+// Equality operators
 
+if (height === '23') {
+  console.log('The == operator des type coercion!');
+}
 
 
 

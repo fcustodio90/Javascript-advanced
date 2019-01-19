@@ -480,6 +480,7 @@ In the end, John would like to have 2 arrays:
 GOOD LUCK 😀
 */
 
+/*
 var bills = [124, 48, 268];
 
 function tipCalculator(bill) {
@@ -502,19 +503,38 @@ function totalPaid(bill, tip) {
 
 var totalArray = [totalPaid(bills[0],tips[0]),totalPaid(bills[1],tips[1]),totalPaid(bills[2],tips[2])];
 console.log(totalArray);
+*/
+
+/*******************************
+* Objects and properties
+*/
+
+// Object literal
+var john = {
+    firstName: 'John',
+    lastName: 'Smith',
+    birthYear: 1990,
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'teacher',
+    isMarried: false
+};
+
+console.log(john.firstName);
+console.log(john['lastName']);
+var x = 'birthYear';
+console.log(john[x]);
+
+john.job = 'designer';
+john['isMarried'] = true;
+console.log(john);
 
 
-
-
-
-
-
-
-
-
-
-
-
+// new Object syntax
+var jane = new Object();
+jane.firstName = 'Jane';
+jane.birthYear = 1969;
+jane['lastName'] = 'Smith';
+console.log(jane);
 
 
 

@@ -399,7 +399,7 @@ yearsUntilRetirement(1969, 'Jane');
 
 //}
 
-
+/*
 // Function expression
 var whatDoYouDo = function(job, firstName) {
   switch(job) {
@@ -418,30 +418,42 @@ console.log(whatDoYouDo('teacher', 'John'));
 console.log(whatDoYouDo('driver', 'John'));
 console.log(whatDoYouDo('designer', 'John'));
 console.log(whatDoYouDo('investor', 'John'));
+*/
 
+/************************************
+* Arrays
+*/
 
+// Initialize new array
+var names = ['John', 'Mark', 'Jane'];
+var years = new Array(1990, 1669, 1948);
 
+console.log(names[2]);
+console.log(names.length);
 
+// Mutate array data
+names[1] = 'Ben';
+names[names.length] = 'Mary';
+console.log(names);
 
+// Different data types
 
+var john = ['John','Smith',1990,'designer','teacher',false];
 
+john.push('blue');
+john.unshift('Mr');
+console.log(john);
 
+john.pop();
+john.pop();
+john.shift();
+console.log(john);
 
+console.log(john.indexOf(1990));
 
+var isDesigner = john.indexOf('designer') === -1 ? 'Not a designer' : 'John is a designer.'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(isDesigner);
 
 
 

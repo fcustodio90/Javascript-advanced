@@ -722,16 +722,20 @@ var johnFamily = {
     totalPaid: [],
     calcTips: function() {
       for (var i = 0; i < this.bills.length; i++) {
-        var percentageTip
-        if (this.bills[i] < 50) {
+
+        var percentageTip;
+        var bill = this.bills[i];
+
+        if (bill < 50) {
           percentageTip = 0.2;
-        } else if (this.bills[i] >= 50 && this.bills[i] < 200) {
+        } else if (bill >= 50 && bill < 200) {
           percentageTip = 0.15;
         } else {
           percentageTip = 0.1;
         }
-        this.tips[i] = this.bills[i] * percentageTip;
-        this.totalPaid[i] = this.tips[i] + this.bills[i];
+
+        this.tips[i] = bill * percentageTip;
+        this.totalPaid[i] = this.tips[i] + bill;
       }
     }
 };
@@ -742,16 +746,20 @@ var markFamily = {
     totalPaid: [],
     calcTips: function() {
       for (var i = 0; i < this.bills.length; i++) {
-        var percentageTip
-        if (this.bills[i] < 100) {
+
+        var percentageTip;
+        var bill = this.bills[i];
+
+        if (bill < 100) {
           percentageTip = 0.2;
-        } else if (this.bills[i] >= 100 && this.bills[i] < 300) {
+        } else if (bill >= 100 && bill < 300) {
           percentageTip = 0.1;
         } else {
           percentageTip = 0.25;
         }
-        this.tips[i] = this.bills[i] * percentageTip;
-        this.totalPaid[i] = this.tips[i] + this.bills[i];
+
+        this.tips[i] = bill * percentageTip;
+        this.totalPaid[i] = this.tips[i] + bill;
       }
     }
 };

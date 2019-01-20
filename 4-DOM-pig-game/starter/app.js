@@ -49,26 +49,39 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     roundScore += dice;
     playerDOM.textContent = roundScore;
   } else {
-    // switch to the next player
-    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-    // set the score back to zero
-    roundScore = 0;
-    // reset the current score if the roll is 1
-    document.getElementById('current-0').textContent = '0';
-    document.getElementById('current-1').textContent = '0';
-    // adding the toggle functionality for better UX
-    document.querySelector('.player-0-panel').classList.toggle('active');
-    document.querySelector('.player-1-panel').classList.toggle('active');
-    // Hide the dice if the result is 1 for better UX
-    document.querySelector('.dice').style.display = 'none';
+    nextplayer();
   }
 });
 
 // Setting the click action for hold
 document.querySelector('.btn-hold').addEventListener('click', function() {
   // Identify which player is playing
-
   // Transfer the current score into Player Score
+  scores[activePlayer] += roundScore;
+
+  document.getElementById(`score-${activePlayer}`).textContent = scores[activePlayer];
+
 
   // Reset the current score back to zero
+
+  // check if player won the game
+
+  // next player
+    switchPlayer();
 });
+
+
+function switchPlayer() {
+  // switch to the next player
+  activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+  // set the score back to zero
+  roundScore = 0;
+  // reset the current score if the roll is 1
+  document.getElementById('current-0').textContent = '0';
+  document.getElementById('current-1').textContent = '0';
+  // adding the toggle functionality for better UX
+  document.querySelector('.player-0-panel').classList.toggle('active');
+  document.querySelector('.player-1-panel').classList.toggle('active');
+  // Hide the dice if the result is 1 for better UX
+  document.querySelector('.dice').style.display = 'none';
+}

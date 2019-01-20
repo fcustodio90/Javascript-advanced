@@ -21,7 +21,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
   // check if game is playing
   if(gamePlaying) {
     // 1. Random dice number
-    var dice = Math.floor(Math.random() * 6) + 1;
+    var randomNum = Math.floor(Math.random() * 6) + 1;
+    var dice = randomNum
 
     // 2. Display the result
     var diceDOM = document.querySelector('.dice');

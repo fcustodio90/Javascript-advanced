@@ -14,21 +14,7 @@ After that, it's the next player's turn
 // Setting multiple variables as undefined
 var scores, roundScore, activePlayer
 
-// assign the previous variables with the default values
-scores = [0,0];
-roundScore = 0;
-activePlayer = 0;
-
-// Hide the dice image at the start of the game
-document.querySelector('.dice').style.display = 'none';
-
-// Setting the score as 0 for both players when the game starts
-document.getElementById('score-0').textContent = '0';
-document.getElementById('score-1').textContent = '0';
-// Setting the current score as 0 for both players when the game starts
-document.getElementById('current-0').textContent = '0';
-document.getElementById('current-1').textContent = '0';
-
+resetGame();
 
 // Setting the click action for roll dice
 document.querySelector('.btn-roll').addEventListener('click', function() {
@@ -92,3 +78,35 @@ function switchPlayer() {
   // Hide the dice if the result is 1 for better UX
   document.querySelector('.dice').style.display = 'none';
 }
+
+function resetGame() {
+  // reset global scores
+  scores = [0, 0];
+  // reset player to 1
+  activePlayer = 0;
+  // reset current Scores
+  roundScore = 0;
+
+  // Hide the dice image at the start of the game
+  document.querySelector('.dice').style.display = 'none';
+  // Setting the score as 0 for both players when the game starts
+  document.getElementById('score-0').textContent = '0';
+  document.getElementById('score-1').textContent = '0';
+  // Setting the current score as 0 for both players when the game starts
+  document.getElementById('current-0').textContent = '0';
+  document.getElementById('current-1').textContent = '0';
+  // restart the names
+  document.getElementById('name-0').textContent = 'Player 1';
+  document.getElementById('name-1').textContent = 'Player 2';
+  // remove the winnerclass
+  document.querySelector('.player-0-panel').classList.remove('winner');
+  document.querySelector('.player-1-panel').classList.remove('winner');
+  // remove the activeclass
+  document.querySelector('.player-0-panel').classList.remove('active');
+  document.querySelector('.player-1-panel').classList.remove('active');
+  // add the activeclass to player 0
+  document.querySelector('.player-0-panel').classList.add('active');
+}
+
+// setting the click action for new game
+document.querySelector('.btn-new').addEventListener('click', resetGame);

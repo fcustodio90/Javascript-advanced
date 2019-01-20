@@ -52,8 +52,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     document.getElementById(`score-${activePlayer}`).textContent = scores[activePlayer];
 
     // check if player won the game
-    // TODO: REMOVE THE 10 LATER! JUST MAKES TESTING EASIER. SHOULD BE 100!!
-    if (scores[activePlayer] >= 10) {
+    if (scores[activePlayer] >= 100) {
       // set the player text into winner
       document.getElementById(`name-${activePlayer}`).textContent = 'Winner!'
       // hide the dice

@@ -49,27 +49,34 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     roundScore += dice;
     playerDOM.textContent = roundScore;
   } else {
-    nextplayer();
+    // call the switch player function
+    switchPlayer();
   }
 });
 
 // Setting the click action for hold
 document.querySelector('.btn-hold').addEventListener('click', function() {
-  // Identify which player is playing
   // Transfer the current score into Player Score
   scores[activePlayer] += roundScore;
-
+  // update the UI for global score
   document.getElementById(`score-${activePlayer}`).textContent = scores[activePlayer];
 
-
-  // Reset the current score back to zero
-
   // check if player won the game
-
-  // next player
-    switchPlayer();
+  // TODO: REMOVE THE 10 LATER! JUST MAKES TESTING EASIER. SHOULD BE 100!!
+  if (scores[activePlayer] >= 10) {
+    // set the player text into winner
+    document.getElementById(`name-${activePlayer}`).textContent = 'Winner!'
+    // hide the dice
+    document.querySelector('.dice').style.display = 'none';
+    // add the css winner class
+    document.querySelector(`.player-${activePlayer}-panel`).classList.add('winner');
+    // kill the active class
+    document.querySelector(`.player-${activePlayer}-panel`).classList.remove('active');
+  } else {
+    // next player
+      switchPlayer();
+  }
 });
-
 
 function switchPlayer() {
   // switch to the next player

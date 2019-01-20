@@ -12,55 +12,62 @@ After that, it's the next player's turn
 */
 
 // Setting multiple variables as undefined
-var scores, roundScore, activePlayer
+var scores, roundScore, activePlayer, gamePlaying;
 
 resetGame();
 
 // Setting the click action for roll dice
 document.querySelector('.btn-roll').addEventListener('click', function() {
+  // check if game is playing
+  if(gamePlaying) {
+    // 1. Random dice number
+    var dice = Math.floor(Math.random() * 6) + 1;
 
-  // 1. Random dice number
-  var dice = Math.floor(Math.random() * 6) + 1;
+    // 2. Display the result
+    var diceDOM = document.querySelector('.dice');
+    var playerDOM = document.querySelector('#current-' + activePlayer);
 
-  // 2. Display the result
-  var diceDOM = document.querySelector('.dice');
-  var playerDOM = document.querySelector('#current-' + activePlayer);
+    diceDOM.style.display = 'block';
+    diceDOM.src = `dice-${dice}.png`;
 
-  diceDOM.style.display = 'block';
-  diceDOM.src = `dice-${dice}.png`;
-
-  // 3. Update the round score IF the rolled number was NOT a 1.
-  if (dice !== 1) {
-    // add score
-    roundScore += dice;
-    playerDOM.textContent = roundScore;
-  } else {
-    // call the switch player function
-    switchPlayer();
+    // 3. Update the round score IF the rolled number was NOT a 1.
+    if (dice !== 1) {
+      // add score
+      roundScore += dice;
+      playerDOM.textContent = roundScore;
+    } else {
+      // call the switch player function
+      switchPlayer();
+    }
   }
 });
 
 // Setting the click action for hold
 document.querySelector('.btn-hold').addEventListener('click', function() {
-  // Transfer the current score into Player Score
-  scores[activePlayer] += roundScore;
-  // update the UI for global score
-  document.getElementById(`score-${activePlayer}`).textContent = scores[activePlayer];
+  // check if game is playing
+  if (gamePlaying) {
+    // Transfer the current score into Player Score
+    scores[activePlayer] += roundScore;
+    // update the UI for global score
+    document.getElementById(`score-${activePlayer}`).textContent = scores[activePlayer];
 
-  // check if player won the game
-  // TODO: REMOVE THE 10 LATER! JUST MAKES TESTING EASIER. SHOULD BE 100!!
-  if (scores[activePlayer] >= 10) {
-    // set the player text into winner
-    document.getElementById(`name-${activePlayer}`).textContent = 'Winner!'
-    // hide the dice
-    document.querySelector('.dice').style.display = 'none';
-    // add the css winner class
-    document.querySelector(`.player-${activePlayer}-panel`).classList.add('winner');
-    // kill the active class
-    document.querySelector(`.player-${activePlayer}-panel`).classList.remove('active');
-  } else {
-    // next player
-      switchPlayer();
+    // check if player won the game
+    // TODO: REMOVE THE 10 LATER! JUST MAKES TESTING EASIER. SHOULD BE 100!!
+    if (scores[activePlayer] >= 10) {
+      // set the player text into winner
+      document.getElementById(`name-${activePlayer}`).textContent = 'Winner!'
+      // hide the dice
+      document.querySelector('.dice').style.display = 'none';
+      // add the css winner class
+      document.querySelector(`.player-${activePlayer}-panel`).classList.add('winner');
+      // kill the active class
+      document.querySelector(`.player-${activePlayer}-panel`).classList.remove('active');
+      // set the state variable to false
+      gamePlaying = false;
+    } else {
+      // next player
+        switchPlayer();
+    }
   }
 });
 
@@ -86,6 +93,8 @@ function resetGame() {
   activePlayer = 0;
   // reset current Scores
   roundScore = 0;
+  // state variable
+  gamePlaying = true;
 
   // Hide the dice image at the start of the game
   document.querySelector('.dice').style.display = 'none';

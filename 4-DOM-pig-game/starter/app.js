@@ -29,6 +29,8 @@ document.getElementById('score-1').textContent = '0';
 document.getElementById('current-0').textContent = '0';
 document.getElementById('current-1').textContent = '0';
 
+
+// Setting the click action for roll dice
 document.querySelector('.btn-roll').addEventListener('click', function() {
 
   // 1. Random dice number
@@ -59,8 +61,14 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     document.querySelector('.player-1-panel').classList.toggle('active');
     // Hide the dice if the result is 1 for better UX
     document.querySelector('.dice').style.display = 'none';
-
   }
+});
 
+// Setting the click action for hold
+document.querySelector('.btn-hold').addEventListener('click', function() {
+  // Identify which player is playing
 
+  // Transfer the current score into Player Score
+
+  // Reset the current score back to zero
 });

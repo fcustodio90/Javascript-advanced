@@ -13,40 +13,46 @@ After that, it's the next player's turn
 
 // Setting multiple variables as undefined
 var scores, roundScore, activePlayer, gamePlaying, finalScore;
-
+// init the game
 resetGame();
 
 // Setting the click action for roll dice
 document.querySelector('.btn-roll').addEventListener('click', function() {
   // check if game is playing
   if(gamePlaying) {
-    // 1. Random dice number
-    // Math.floor(Math.random() * 6) + 1;
+    // 1. Random dice number for both dices
     var diceOne = Math.floor(Math.random() * 6) + 1;
     var diceTwo = Math.floor(Math.random() * 6) + 1;
     // 2. Display the result
     var diceDOMOne = document.querySelector('.dice');
     var diceDOMTwo = document.querySelector('.dice-two');
+    // lock player DOM
     var playerDOM = document.querySelector('#current-' + activePlayer);
-
+    // display both dices
     diceDOMOne.style.display = 'block';
     diceDOMTwo.style.display = 'block';
+    // set the dice pictures
     diceDOMOne.src = `dice-${diceOne}.png`;
     diceDOMTwo.src = `dice-${diceTwo}.png`;
 
-    // 3. Update the round score IF the rolled number was NOT a 1.
 
+    // 3. Evaluate if both dices aren't six
     if (diceOne === 6 && diceTwo === 6) {
-      // add score
-      console.log('SWITCH THE PLAYER BECAUSE HE ROLLED TWO SIXES LUL');
+      // set the player score to 0
       scores[activePlayer] = 0
+      // update the UI
       document.getElementById(`score-${activePlayer}`).textContent = scores[activePlayer];
+      // switch player
+      switchPlayer();
+    // 4. Evalute if any of the dices is different from 1
     } else if (diceOne !== 1 && diceTwo !== 1) {
-      console.log('HELLO TEST FUCKER');
+      // update the current score
       roundScore += diceOne + diceTwo
+      // update the UI current score
       playerDOM.textContent = roundScore;
+    // 5. if none of the conditions before are met
     } else {
-      console.log('SWITCH THE PLAYER FUCKER')
+      // switch player
       switchPlayer();
     }
   }
@@ -62,11 +68,12 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     document.getElementById(`score-${activePlayer}`).textContent = scores[activePlayer];
 
     // check if player won the game
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= finalScore.value) {
       // set the player text into winner
       document.getElementById(`name-${activePlayer}`).textContent = 'Winner!'
-      // hide the dice
+      // hide the dices
       document.querySelector('.dice').style.display = 'none';
+      document.querySelector('.dice-two').style.display = 'none';
       // add the css winner class
       document.querySelector(`.player-${activePlayer}-panel`).classList.add('winner');
       // kill the active class

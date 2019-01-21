@@ -21,15 +21,18 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
   // check if game is playing
   if(gamePlaying) {
     // 1. Random dice number
-    var randomNum = Math.floor(Math.random() * 6) + 1;
-    var dice = randomNum
+    var diceOne = Math.floor(Math.random() * 6) + 1;
+    var diceTwo = Math.floor(Math.random() * 6) + 1;
 
     // 2. Display the result
-    var diceDOM = document.querySelector('.dice');
+    var diceDOMOne = document.querySelector('.dice');
+    var diceDOMTwo = document.querySelector('.dice-two');
     var playerDOM = document.querySelector('#current-' + activePlayer);
 
-    diceDOM.style.display = 'block';
-    diceDOM.src = `dice-${dice}.png`;
+    diceDOMOne.style.display = 'block';
+    diceDOMTwo.style.display = 'block';
+    diceDOMOne.src = `dice-${diceOne}.png`;
+    diceDOMTwo.src = `dice-${diceTwo}.png`;
 
     // 3. Update the round score IF the rolled number was NOT a 1.
     if (dice !== 1) {
@@ -96,8 +99,9 @@ function resetGame() {
   // state variable
   gamePlaying = true;
 
-  // Hide the dice image at the start of the game
+  // Hide the dices images at the start of the game
   document.querySelector('.dice').style.display = 'none';
+  document.querySelector('.dice-two').style.display = 'none';
   // Setting the score as 0 for both players when the game starts
   document.getElementById('score-0').textContent = '0';
   document.getElementById('score-1').textContent = '0';

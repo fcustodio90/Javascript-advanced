@@ -12,7 +12,7 @@ After that, it's the next player's turn
 */
 
 // Setting multiple variables as undefined
-var scores, roundScore, activePlayer, gamePlaying;
+var scores, roundScore, activePlayer, gamePlaying, finalScore;
 
 resetGame();
 
@@ -21,9 +21,9 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
   // check if game is playing
   if(gamePlaying) {
     // 1. Random dice number
+    // Math.floor(Math.random() * 6) + 1;
     var diceOne = Math.floor(Math.random() * 6) + 1;
     var diceTwo = Math.floor(Math.random() * 6) + 1;
-
     // 2. Display the result
     var diceDOMOne = document.querySelector('.dice');
     var diceDOMTwo = document.querySelector('.dice-two');
@@ -35,12 +35,18 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     diceDOMTwo.src = `dice-${diceTwo}.png`;
 
     // 3. Update the round score IF the rolled number was NOT a 1.
-    if (dice !== 1) {
+
+    if (diceOne === 6 && diceTwo === 6) {
       // add score
-      roundScore += dice;
+      console.log('SWITCH THE PLAYER BECAUSE HE ROLLED TWO SIXES LUL');
+      scores[activePlayer] = 0
+      document.getElementById(`score-${activePlayer}`).textContent = scores[activePlayer];
+    } else if (diceOne !== 1 && diceTwo !== 1) {
+      console.log('HELLO TEST FUCKER');
+      roundScore += diceOne + diceTwo
       playerDOM.textContent = roundScore;
     } else {
-      // call the switch player function
+      console.log('SWITCH THE PLAYER FUCKER')
       switchPlayer();
     }
   }
@@ -87,6 +93,7 @@ function switchPlayer() {
   document.querySelector('.player-1-panel').classList.toggle('active');
   // Hide the dice if the result is 1 for better UX
   document.querySelector('.dice').style.display = 'none';
+  document.querySelector('.dice-two').style.display = 'none';
 }
 
 function resetGame() {
@@ -99,6 +106,11 @@ function resetGame() {
   // state variable
   gamePlaying = true;
 
+
+  // Set the final score variable!
+  finalScore = document.querySelector('.final-score')
+  // Tell the user to set the score that requires to end the game!
+  finalScore.value = prompt('Please set the final game score! :D');
   // Hide the dices images at the start of the game
   document.querySelector('.dice').style.display = 'none';
   document.querySelector('.dice-two').style.display = 'none';

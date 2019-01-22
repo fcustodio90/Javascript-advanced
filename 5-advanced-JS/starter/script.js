@@ -6,4 +6,4 @@ var Person = function(name, yearOfBirth, job) {
   this.job = job;
 };
 
-
+var john = new Person('John', 1990, 'teacher');

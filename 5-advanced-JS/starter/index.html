@@ -7,6 +7,13 @@
 
     <body>
         <h1>Section 5: Advanced JavaScript: Objects and Functions</h1>
+        <h2>Prototype Chain!</h2>
+        <p>Every Javascript object has a prototype property,
+        which makes inheritance possible in Javascript;</p>
+        <p>The prototype property of an object is where we put
+        methods and properties that we want other objects to inherit</p>
+        <p>The constructor's prototype propert is <strong>NOT</strong> the prototype of the constructor itself, it's the prototype of <strong>ALL</strong> instances that are created through it</p>
+        <p>When a certain method(or property)is called, the search starts in the object itself, and if it cannot be found, the search moves on to the object's prototype. This continues until the method is found: <strong>prototype chain</strong></p>
         <script src="script.js"></script>
     </body>
 </html>

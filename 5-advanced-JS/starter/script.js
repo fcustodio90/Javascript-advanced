@@ -206,6 +206,8 @@ game();
 ///////////////////////////////
 // Lecture: Closures
 
+/*
+
 function retirement(retirementAge) {
   return function(yearOfBirth) {
     var a = ' years left until retirement.';
@@ -248,13 +250,31 @@ var questionTeacher = interviewQuestion('teacher');
 
 questionDesigner('Filipe');
 questionTeacher('Filipe');
+*/
 
 
+///////////////////////////////////////
+// Lecture: Bind, call and apply
 
+var john = {
+    name: 'John',
+    age: 26,
+    job: 'teacher',
+    presentation: function(style, timeOfDay) {
+      if (style === 'formal') {
+        console.log('Good ' + timeOfDay +
+                    ', Ladies and gentlemen! I\'m ' + this.name
+                    + ', I\'m a ' + this.job + ', and I\'m '
+                    + this.age + ' years old.' );
+      } else if (style === 'friendly') {
+        console.log('Hey! What\'s up? I\'m ' + this.name
+                    + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.'
+                    + timeOfDay);
+      }
+    }
+}
 
-
-
-
+john.presentation('friendly', 'morning');
 
 
 

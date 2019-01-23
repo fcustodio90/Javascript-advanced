@@ -155,7 +155,26 @@ designerQuestion('Mark');
 
 interviewQuestion('teacher')('Filipe');
 
+function typeOfGame(game) {
+  if (game === 'mmorpg') {
+      return function() {
+        return x = ['Wow', 'Warhammer', 'Destiny'];
+    }
+  } else if (game === 'fps') {
+      return function() {
+        return x = ['Counter-strike', 'Call of Duty', 'Fortnite'];
+      }
+  } else {
+      return function() {
+        console.log('Sorry we do know that type of game');
+    }
+  }
+}
 
+mmorpgArray = typeOfGame('mmorpg')();
+fpsArray = typeOfGame('fps')();
+
+console.log(mmorpgArray, fpsArray);
 
 
 

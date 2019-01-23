@@ -130,6 +130,7 @@ console.log(heartRates);
 ///////////////////////////////////////
 // Lecture: Functions returning functions
 
+/*
 function interviewQuestion(job) {
   if (job === 'designer') {
       return function(name) {
@@ -173,14 +174,32 @@ function typeOfGame(game) {
 
 mmorpgArray = typeOfGame('mmorpg')();
 fpsArray = typeOfGame('fps')();
-
 console.log(mmorpgArray, fpsArray);
+*/
 
+///////////////////////////////////////////
+// Lecture: IIFE
 
+/*
+function game() {
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+}
 
+game();
+*/
 
+(function () {
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+})();
 
+// console.log(score);
 
+(function (goodLuck) {
+  var score = Math.random() * 10;
+  console.log(score >= 5 - goodLuck);
+})(5);
 
 
 

@@ -103,13 +103,12 @@ instead of the answer. In this case, DON'T call the function from task 8.
     // prompt inputs are always strings so we need to parse to int to match with
     // the array index
     var userAnswer = parseInt(window.prompt('Please type the correct answer!')) - 1;
-
-    // check if the user answer is correct!!
-    questionsSample[questionsRand].correctAnswer(userAnswer);
+    console.log(!isNaN(userAnswer));
+    if (!isNaN(userAnswer)) {
+      // check if the user answer is correct!!
+      questionsSample[questionsRand].correctAnswer(userAnswer);
+      init();
+    }
   }
-
   init();
-
-
-
 })();

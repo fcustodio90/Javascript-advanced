@@ -367,65 +367,69 @@ instead of the answer. In this case, DON'T call the function from task 8.
 11. Display the score in the console. Use yet another method for this.
 */
 
-var Question = function(questions, answers, solution) {
-    this.questions = questions;
-    this.answers = answers;
-    this.solution =  solution
-};
+(function () {
+  var Question = function(questions, answers, solution) {
+      this.questions = questions;
+      this.answers = answers;
+      this.solution =  solution
+  };
 
-// 1- Question: Is javascript the coolest programming language in the world?
-// 1- Answer: Yes or No
-var questionOne = new Question('Is Javascript the coolest programming in the world?',
-                                ['Yes', 'No'], 0);
+  // 1- Question: Is javascript the coolest programming language in the world?
+  // 1- Answer: Yes or No
+  var questionOne = new Question('Is Javascript the coolest programming in the world?',
+                                  ['Yes', 'No'], 0);
 
-// 2- Question: What is the name of this course teacher?
-// 2- Answer: John, Michael, Jonas
-var questionTwo = new Question('What is the name of this course teacher?',
-                                ['John', 'Michael', 'Jonas'], 2);
+  // 2- Question: What is the name of this course teacher?
+  // 2- Answer: John, Michael, Jonas
+  var questionTwo = new Question('What is the name of this course teacher?',
+                                  ['John', 'Michael', 'Jonas'], 2);
 
-// 3- Question: What does best describe coding?
-// 3- Boring, Hard, Fun, Tedious
-var questionThree = new Question('What does best describe coding?',
-                                  ['Boring','Hard','Fun','Tedious'], 2);
+  // 3- Question: What does best describe coding?
+  // 3- Boring, Hard, Fun, Tedious
+  var questionThree = new Question('What does best describe coding?',
+                                    ['Boring','Hard','Fun','Tedious'], 2);
 
-Question.prototype.logQuestions = function() {
-  // log the specific object question
-  console.log(this.questions);
-  // set the counter to log the indexes later
-  var counter = 0
-  // iterate the answers array
-  this.answers.forEach(function(el) {
-    // increment the index
-    counter ++
-    // log the index + answer
-    console.log(`${counter}:${el}`);
-  });
-}
-
-Question.prototype.correctAnswer = function(answer) {
-  // check if user answer is the same as object solution
-  if (answer === this.solution) {
-    console.log('Super!! Correct Answer');
-  } else {
-    console.log('Ups!! Wrong answer');
+  Question.prototype.logQuestions = function() {
+    // log the specific object question
+    console.log(this.questions);
+    // set the counter to log the indexes later
+    var counter = 0
+    // iterate the answers array
+    this.answers.forEach(function(el) {
+      // increment the index
+      counter ++
+      // log the index + answer
+      console.log(`${counter}:${el}`);
+    });
   }
-}
 
-// store the question objects into an array
-var questionsSample = [questionOne, questionTwo, questionThree];
-// randomize a question
-var questionsRand = Math.floor(Math.random(questionsSample) * questionsSample.length);
+  Question.prototype.correctAnswer = function(answer) {
+    // check if user answer is the same as object solution
+    if (answer === this.solution) {
+      console.log('Super!! Correct Answer');
+    } else {
+      console.log('Ups!! Wrong answer');
+    }
+  }
 
-// initialize the quiz game
-questionsSample[questionsRand].logQuestions();
+  // store the question objects into an array
+  var questionsSample = [questionOne, questionTwo, questionThree];
+  // randomize a question
+  var questionsRand = Math.floor(Math.random(questionsSample) * questionsSample.length);
 
-// prompt the question and save the answer in a variable
-// prompt inputs are always strings so we need to parse to int to match with
-// the array index
-var userAnswer = parseInt(window.prompt('Please type the correct answer!')) - 1;
+  // initialize the quiz game
+  questionsSample[questionsRand].logQuestions();
 
-// check if the user answer is correct!!
-questionsSample[questionsRand].correctAnswer(userAnswer);
+  // prompt the question and save the answer in a variable
+  // prompt inputs are always strings so we need to parse to int to match with
+  // the array index
+  var userAnswer = parseInt(window.prompt('Please type the correct answer!')) - 1;
+
+  // check if the user answer is correct!!
+  questionsSample[questionsRand].correctAnswer(userAnswer);
+})();
+
+
 
 
 

@@ -389,15 +389,21 @@ var questionThree = new Question('What does best describe coding?',
                                   ['Boring','Hard','Fun','Tedious'], 2);
 
 Question.prototype.logQuestions = function() {
+  // log the specific object question
   console.log(this.questions);
+  // set the counter to log the indexes later
   var counter = 0
+  // iterate the answers array
   this.answers.forEach(function(el) {
+    // increment the index
     counter ++
+    // log the index + answer
     console.log(`${counter}:${el}`);
   });
 }
 
 Question.prototype.correctAnswer = function(answer) {
+  // check if user answer is the same as object solution
   if (answer === this.solution) {
     console.log('Super!! Correct Answer');
   } else {
@@ -405,8 +411,13 @@ Question.prototype.correctAnswer = function(answer) {
   }
 }
 
+// store the question objects into an array
+var questionsSample = [questionOne, questionTwo, questionThree];
+// randomize a question
+var questionsRand = Math.floor(Math.random(questionsSample) * questionsSample.length);
 
-
+// initialize the quiz game
+questionsSample[questionsRand].logQuestions();
 
 
 

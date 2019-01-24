@@ -367,21 +367,26 @@ instead of the answer. In this case, DON'T call the function from task 8.
 11. Display the score in the console. Use yet another method for this.
 */
 
-var Question = function(questions, answers, solutions) {
+var Question = function(questions, answers, solution) {
     this.questions = questions;
     this.answers = answers;
-    this.solutions =  solution
+    this.solution =  solution
 };
 
 // 1- Question: Is javascript the coolest programming language in the world?
 // 1- Answer: Yes or No
+var questionOne = new Question('Is Javascript the coolest programming in the world?',
+                                ['Yes', 'No'], 0);
 
 // 2- Question: What is the name of this course teacher?
 // 2- Answer: John, Michael, Jonas
+var questionTwo = new Question('What is the name of this course teacher?',
+                                ['John', 'Michael', 'Jonas'], 2);
 
 // 3- Question: What does best describe coding?
 // 3- Boring, Hard, Fun, Tedious
-
+var questionThree = new Question('What does best describe coding?',
+                                  ['Boring','Hard','Fun','Tedious'], 2);
 
 
 

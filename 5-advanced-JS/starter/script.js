@@ -422,10 +422,10 @@ questionsSample[questionsRand].logQuestions();
 // prompt the question and save the answer in a variable
 // prompt inputs are always strings so we need to parse to int to match with
 // the array index
-var userAnswer = parseInt(window.prompt('Please type the correct answer!'));
+var userAnswer = parseInt(window.prompt('Please type the correct answer!')) - 1;
 
 // check if the user answer is correct!!
-questionsSample[questionsRand].correctAnswer();
+questionsSample[questionsRand].correctAnswer(userAnswer);
 
 
 

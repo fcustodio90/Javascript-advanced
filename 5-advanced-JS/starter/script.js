@@ -397,7 +397,13 @@ Question.prototype.logQuestions = function() {
   });
 }
 
-questionOne.logQuestions();
+Question.prototype.correctAnswer = function(answer) {
+  if (answer === this.solution) {
+    console.log('Super!! Correct Answer');
+  } else {
+    console.log('Ups!! Wrong answer');
+  }
+}
 
 
 

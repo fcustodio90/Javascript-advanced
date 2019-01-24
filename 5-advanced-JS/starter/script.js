@@ -403,37 +403,30 @@ instead of the answer. In this case, DON'T call the function from task 8.
     });
   }
 
-  Question.prototype.correctAnswer = function(answer, callback) {
+  Question.prototype.correctAnswer = function(answer) {
     // check if user answer is the same as object solution
     if (answer === this.solution) {
       console.log('Super!! Correct Answer');
-      // callback function
     } else {
       console.log('Ups!! Wrong answer');
-      // callback function
     }
   }
 
-  function init() {
-    // store the question objects into an array
-    var questionsSample = [questionOne, questionTwo, questionThree];
-    // randomize a question
-    var questionsRand = Math.floor(Math.random(questionsSample) * questionsSample.length);
+  // store the question objects into an array
+  var questionsSample = [questionOne, questionTwo, questionThree];
+  // randomize a question
+  var questionsRand = Math.floor(Math.random(questionsSample) * questionsSample.length);
 
-    // display the questions
-    questionsSample[questionsRand].logQuestions();
+  // initialize the quiz game
+  questionsSample[questionsRand].logQuestions();
 
-    // prompt the question and save the answer in a variable
-    // prompt inputs are always strings so we need to parse to int to match with
-    // the array index
-    var userAnswer = parseInt(window.prompt('Please type the correct answer!')) - 1;
+  // prompt the question and save the answer in a variable
+  // prompt inputs are always strings so we need to parse to int to match with
+  // the array index
+  var userAnswer = parseInt(window.prompt('Please type the correct answer!')) - 1;
 
-    // check if the user answer is correct!!
-    questionsSample[questionsRand].correctAnswer(userAnswer);
-  }
-
-  init();
-
+  // check if the user answer is correct!!
+  questionsSample[questionsRand].correctAnswer(userAnswer);
 })();
 
 

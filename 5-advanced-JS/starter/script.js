@@ -388,11 +388,16 @@ var questionTwo = new Question('What is the name of this course teacher?',
 var questionThree = new Question('What does best describe coding?',
                                   ['Boring','Hard','Fun','Tedious'], 2);
 
+Question.prototype.logQuestions = function() {
+  console.log(this.questions);
+  var counter = 0
+  this.answers.forEach(function(el) {
+    counter ++
+    console.log(`${counter}:${el}`);
+  });
+}
 
-
-
-
-
+questionOne.logQuestions();
 
 
 

@@ -407,8 +407,10 @@ instead of the answer. In this case, DON'T call the function from task 8.
     // check if user answer is the same as object solution
     if (answer === this.solution) {
       console.log('Super!! Correct Answer');
+      // callback function
     } else {
       console.log('Ups!! Wrong answer');
+      // callback function
     }
   }
 

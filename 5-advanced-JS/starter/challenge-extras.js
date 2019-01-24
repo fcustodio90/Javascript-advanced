@@ -51,6 +51,12 @@ instead of the answer. In this case, DON'T call the function from task 8.
       this.solution =  solution
   };
 
+  // easy solution for score, no need to create extra functions
+  // because objects are mutable through functions and methods :)
+  var game = {
+    score: 0
+  }
+
   // 1- Question: Is javascript the coolest programming language in the world?
   // 1- Answer: Yes or No
   var questionOne = new Question('Is Javascript the coolest programming in the world?',
@@ -84,10 +90,12 @@ instead of the answer. In this case, DON'T call the function from task 8.
     // check if user answer is the same as object solution
     if (answer === this.solution) {
       console.log('Super!! Correct Answer');
+      game.score ++
     } else {
       console.log('Ups!! Wrong answer');
     }
   }
+
 
   // store the question objects into an array
   var questionsSample = [questionOne, questionTwo, questionThree];
@@ -107,6 +115,7 @@ instead of the answer. In this case, DON'T call the function from task 8.
     if (!isNaN(userAnswer)) {
       // check if the user answer is correct!!
       questionsSample[questionsRand].correctAnswer(userAnswer);
+      console.log(`Your score: ${game.score}`)
       init();
     }
   }

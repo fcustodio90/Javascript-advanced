@@ -94,14 +94,22 @@ instead of the answer. In this case, DON'T call the function from task 8.
   // randomize a question
   var questionsRand = Math.floor(Math.random(questionsSample) * questionsSample.length);
 
-  // initialize the quiz game
-  questionsSample[questionsRand].logQuestions();
 
-  // prompt the question and save the answer in a variable
-  // prompt inputs are always strings so we need to parse to int to match with
-  // the array index
-  var userAnswer = parseInt(window.prompt('Please type the correct answer!')) - 1;
+  function init() {
+    // initialize the quiz game
+    questionsSample[questionsRand].logQuestions();
 
-  // check if the user answer is correct!!
-  questionsSample[questionsRand].correctAnswer(userAnswer);
+    // prompt the question and save the answer in a variable
+    // prompt inputs are always strings so we need to parse to int to match with
+    // the array index
+    var userAnswer = parseInt(window.prompt('Please type the correct answer!')) - 1;
+
+    // check if the user answer is correct!!
+    questionsSample[questionsRand].correctAnswer(userAnswer);
+  }
+
+  init();
+
+
+
 })();

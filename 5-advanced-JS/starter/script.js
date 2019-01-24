@@ -420,9 +420,12 @@ var questionsRand = Math.floor(Math.random(questionsSample) * questionsSample.le
 questionsSample[questionsRand].logQuestions();
 
 // prompt the question and save the answer in a variable
-var userAnswer = window.prompt('Please type the correct answer!');
+// prompt inputs are always strings so we need to parse to int to match with
+// the array index
+var userAnswer = parseInt(window.prompt('Please type the correct answer!'));
 
-
+// check if the user answer is correct!!
+questionsSample[questionsRand].correctAnswer();
 
 
 
